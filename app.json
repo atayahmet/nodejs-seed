@@ -1,0 +1,8 @@
+{
+  "name": "Nodejs seed",
+  "description": "Nodejs seed",
+  "repository": "git@github.com:atayahmet/nodejs-seed.git",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
