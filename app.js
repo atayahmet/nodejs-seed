@@ -1,10 +1,11 @@
 var bodyParser = require('body-parser')
 var express = require('express')
+var moment = require('moment')
 var app = express()
 
 app.use(bodyParser.json());
 
-app.post('/getRecord', function (req, res) {
+app.post('/getRecord', (req, res) => {
 
   const key = req.body.key;
 
@@ -12,10 +13,13 @@ app.post('/getRecord', function (req, res) {
   var MongoClient = require('mongodb').MongoClient;
 
   // Connect to the db
-  MongoClient.connect("mongodb://dbUser:dbPassword@ds155428.mlab.com:55428/getir-bitaksi-hackathon", function(err, db) {
+  MongoClient.connect("mongodb://dbUser:dbPassword@ds155428.mlab.com:55428/getir-bitaksi-hackathon", (err, db) => {
     if(!err) {
-      db.collection('records', function(err, collection) {
-        collection.findOne({ key }, function(err, data) {
+      db.collection('records', (err, collection) => {
+        collection.findOne({ key }, (err, data) => {
+
+          if(data) data.createdAt = moment(data.createdAt).format("YYYY-MM-DD");
+
           const response = data ? data : { "status" : 404 }
 
           res.json(response);
@@ -27,6 +31,6 @@ app.post('/getRecord', function (req, res) {
 
 var port = process.env.PORT || 8000
 
-app.listen(port, function () {
+app.listen(port,  () => {
   console.log('Example app listening on port ' + port + '!')
 })
