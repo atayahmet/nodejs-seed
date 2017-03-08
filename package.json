@@ -1,0 +1,23 @@
+{
+  "name": "bitaksi",
+  "version": "1.0.0",
+  "description": "BiTaksi Hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http"
+  },
+  "keywords": [
+    "bitaksi"
+  ],
+  "author": "Ahmet ATAY",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.24"
+  }
+}
