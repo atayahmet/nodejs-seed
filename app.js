@@ -16,7 +16,7 @@ app.post('/getRecord', (req, res) => {
   MongoClient.connect("mongodb://dbUser:dbPassword@ds155428.mlab.com:55428/getir-bitaksi-hackathon", (err, db) => {
     if(!err) {
       db.collection('records', (err, collection) => {
-        collection.findOne({ key }, (err, data) => {
+        collection.findOne({ key }, {key: 1, value: 1, createdAt: 1, _id: 0}, (err, data) => {
 
           if(data) data.createdAt = moment(data.createdAt).format("YYYY-MM-DD");
 
